@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Website pribadi dan portofolio pelajar Teknik Komputer dan Jaringan.">
+  <title>Portofolio | Lukman Azzis Prassetyo</title>
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --surface: #ffffff;
+      --text: #172033;
+      --muted: #657087;
+      --primary: #6c4df6;
+      --primary-dark: #5034d4;
+      --accent: #14b8a6;
+      --border: #e7e9f2;
+      --shadow: 0 18px 45px rgba(32, 36, 70, .09);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+    body {
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1100px, 92%); margin: auto; }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(231,233,242,.85);
+    }
+    .nav {
+      min-height: 72px; display: flex; align-items: center;
+      justify-content: space-between; gap: 18px;
+    }
+    .brand { font-weight: 850; font-size: 1.12rem; letter-spacing: -.5px; }
+    .brand span { color: var(--primary); }
+    nav { display: flex; flex-wrap: wrap; gap: 7px; }
+    nav a {
+      padding: 9px 13px; border-radius: 12px; color: var(--muted);
+      font-size: .9rem; font-weight: 700; transition: .22s ease;
+    }
+    nav a:hover, nav a:focus-visible {
+      color: #fff; background: var(--primary);
+      transform: translateY(-2px); box-shadow: 0 8px 18px #6c4df63b;
+      outline: none;
+    }
+    .hero { padding: 82px 0 65px; }
+    .hero-grid { display: grid; grid-template-columns: 1.25fr .75fr; align-items: center; gap: 42px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--primary-dark); background: #eeeaff; border-radius: 99px;
+      padding: 7px 13px; font-size: .83rem; font-weight: 800; margin-bottom: 18px;
+    }
+    h1 { font-size: clamp(2.4rem, 6vw, 4.5rem); line-height: 1.08; letter-spacing: -2px; margin-bottom: 18px; }
+    h1 span { color: var(--primary); }
+    .hero p { color: var(--muted); max-width: 600px; font-size: 1.05rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 27px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      border: 1px solid transparent; border-radius: 13px; padding: 12px 18px;
+      font-weight: 800; transition: .22s ease; cursor: pointer;
+    }
+    .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 10px 22px #6c4df633; }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-3px); }
+    .btn-secondary { border-color: var(--border); background: var(--surface); }
+    .btn-secondary:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-3px); }
+    .profile-card {
+      background: linear-gradient(145deg, #765df7, #3d2caa);
+      border-radius: 30px; padding: 28px; color: white; box-shadow: var(--shadow);
+      transform: rotate(2deg);
+    }
+    .avatar {
+      width: 100%; aspect-ratio: 1 / 1; border-radius: 22px;
+      display: grid; place-items: center; font-size: 5rem;
+      background: linear-gradient(145deg, #d9d2ff, #f0efff); color: #4d3ab4;
+      margin-bottom: 20px;
+    }
+    .profile-card h2 { font-size: 1.35rem; margin-bottom: 3px; }
+    .profile-card p { color: #e4e0ff; font-size: .93rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 17px; }
+    .tag { background: rgba(255,255,255,.16); padding: 6px 10px; border-radius: 99px; font-size: .8rem; }
+    section { padding: 55px 0; }
+    .section-heading { margin-bottom: 26px; }
+    .section-heading .kicker { color: var(--primary); font-weight: 850; font-size: .82rem; text-transform: uppercase; letter-spacing: 1.4px; }
+    .section-heading h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); letter-spacing: -.8px; margin-top: 4px; }
+    .section-heading p { color: var(--muted); margin-top: 5px; }
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 25px; box-shadow: var(--shadow);
+    }
+    .about-grid, .two-col { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .info-list { list-style: none; display: grid; gap: 13px; }
+    .info-list li { display: flex; gap: 12px; align-items: flex-start; }
+    .info-icon {
+      display: grid; place-items: center; min-width: 38px; height: 38px;
+      background: #f0edff; border-radius: 12px; font-size: 1.05rem;
+    }
+    .info-list strong { display: block; }
+    .muted { color: var(--muted); }
+    .timeline { display: grid; gap: 16px; }
+    .timeline-item { border-left: 3px solid #d9d2ff; padding: 3px 0 5px 18px; }
+    .timeline-item .date { color: var(--primary); font-weight: 800; font-size: .86rem; }
+    .timeline-item h3 { margin: 4px 0; font-size: 1.08rem; }
+    .table-wrap { overflow-x: auto; border-radius: 16px; border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; min-width: 560px; background: white; }
+    th { background: #5b43dc; color: white; text-align: left; padding: 14px 16px; }
+    td { padding: 13px 16px; border-bottom: 1px solid var(--border); }
+    tbody tr:nth-child(even) { background: #f6f4ff; }
+    tbody tr:hover { background: #ece8ff; }
+    tr:last-child td { border-bottom: 0; }
+    .activity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .activity-card { transition: .22s ease; }
+    .activity-card:hover { transform: translateY(-5px); border-color: #c8befd; }
+    .activity-card .emoji { font-size: 1.8rem; margin-bottom: 10px; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    .gallery-item {
+      min-height: 180px; border-radius: 18px; overflow: hidden;
+      background: linear-gradient(135deg, #dcd6ff, #c6f5ee);
+      display: grid; place-items: center; text-align: center; padding: 20px;
+      color: #34257e; font-weight: 800; border: 1px solid var(--border);
+    }
+    .gallery-item:nth-child(2) { background: linear-gradient(135deg, #ffe3d5, #fff0b8); color: #874323; }
+    .gallery-item:nth-child(3) { background: linear-gradient(135deg, #c9e9ff, #d9d3ff); color: #234b83; }
+    .gallery-item:nth-child(4) { background: linear-gradient(135deg, #d3f7df, #c9e9ff); color: #216747; }
+    .gallery-item:nth-child(5) { background: linear-gradient(135deg, #fbd5e5, #e7dcff); color: #873d68; }
+    .gallery-item:nth-child(6) { background: linear-gradient(135deg, #fff0b8, #ffd8d8); color: #7a4a23; }
+    .gallery-item .big { display: block; font-size: 2.4rem; margin-bottom: 8px; }
+    .gallery-item img { display: block; width: 100%; height: 100%; min-height: 220px; object-fit: cover; border-radius: 17px; }
+    .gallery-grid .gallery-item { padding: 0; }
+    .note { font-size: .9rem; color: var(--muted); margin-top: 14px; }
+    footer { margin-top: 35px; padding: 28px 0; background: #17152a; color: #e8e6ff; text-align: center; }
+    footer p { color: #b9b5d7; font-size: .9rem; }
+    .back-top { position: fixed; right: 18px; bottom: 18px; z-index: 5; border-radius: 50%; width: 46px; height: 46px; display: grid; place-items: center; background: var(--primary); color: white; box-shadow: var(--shadow); }
+    .back-top:hover { background: var(--primary-dark); transform: translateY(-3px); }
+    @media (max-width: 800px) {
+      .nav { padding: 12px 0; align-items: flex-start; flex-direction: column; }
+      nav { gap: 4px; }
+      nav a { padding: 7px 9px; font-size: .82rem; }
+      .hero { padding-top: 52px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .profile-card { max-width: 420px; transform: none; }
+      .about-grid, .two-col { grid-template-columns: 1fr; }
+      .activity-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      h1 { letter-spacing: -1.2px; }
+      .activity-grid, .gallery-grid { grid-template-columns: 1fr; }
+      .card { padding: 20px; }
+    }
+  </style>
+</head>
+<body id="home">
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home">Lukman<span>.</span></a>
+      <nav aria-label="Navigasi utama">
+        <a href="#home">Home</a>
+        <a href="#pendidikan">Pendidikan</a>
+        <a href="#jadwal">Jadwal</a>
+        <a href="#aktivitas">Aktivitas</a>
+        <a href="#galeri">Galleries</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">👋 Selamat datang di website saya</span>
+          <h1>Halo, saya <span>Lukman Azzis</span></h1>
+          <p>Saya adalah pelajar Teknik Komputer dan Jaringan yang tertarik pada dunia teknologi, pemrograman web, dan kreativitas digital. Website ini dibuat sebagai portofolio pribadi untuk tugas praktikum CSS.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#pendidikan">Jelajahi Profil ↘</a>
+            <a class="btn btn-secondary" href="#galeri">Lihat Galeri</a>
+          </div>
+        </div>
+        <aside class="profile-card">
+          <div class="avatar" aria-label="Ilustrasi avatar">👨🏻‍💻</div>
+          <h2>Lukman Azzis Prassetyo</h2>
+          <p>Pelajar • Teknik Komputer dan Jaringan</p>
+          <div class="tags">
+            <span class="tag">💻 Coding</span>
+            <span class="tag">🍳 Memasak</span>
+            <span class="tag">🌐 Web Design</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="pendidikan">
+      <div class="container">
+        <div class="section-heading">
+          <span class="kicker">Tentang saya</span>
+          <h2>Pendidikan & Profil</h2>
+          <p>Informasi singkat mengenai latar belakang dan minat saya.</p>
+        </div>
+        <div class="about-grid">
+          <article class="card">
+            <ul class="info-list">
+              <li><span class="info-icon">🎓</span><div><strong>Sekolah</strong><span class="muted">SMKN 1 Surabaya</span></div></li>
+              <li><span class="info-icon">🧑‍💻</span><div><strong>Jurusan</strong><span class="muted">Teknik Komputer dan Jaringan (TKJ)</span></div></li>
+              <li><span class="info-icon">📚</span><div><strong>Kelas</strong><span class="muted">XI</span></div></li>
+              <li><span class="info-icon">✨</span><div><strong>Minat</strong><span class="muted">HTML, CSS, JavaScript, dan teknologi komputer</span></div></li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3 style="margin-bottom:16px">Riwayat Pendidikan</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <span class="date">Saat ini</span>
+                <h3>SMKN 1 Surabaya</h3>
+                <p class="muted">Jurusan Teknik Komputer dan Jaringan.</p>
+              </div>
+              <div class="timeline-item">
+                <span class="date">Sebelumnya</span>
+                <h3>SMPN 16 SURABAYA</h3>
+                <p class="muted">Pendidikan menengah pertama.</p>
+              </div>
+              <div class="timeline-item">
+                <span class="date">Pelatihan / Training</span>
+                <h3>Belajar mandiri pemrograman</h3>
+                <p class="muted">Isi dengan pelatihan atau sertifikat yang benar-benar pernah diikuti.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="jadwal">
+      <div class="container">
+        <div class="section-heading">
+          <span class="kicker">Kegiatan belajar</span>
+          <h2>Jadwal Pelajaran</h2>
+          <p>Contoh tabel dengan styling CSS. Ganti mata pelajaran dan jam sesuai jadwal asli.</p>
+        </div>
+        <div class="card">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Hari</th><th>Waktu</th><th>Mata Pelajaran</th><th>Keterangan</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Senin</td><td>07.00–09.00</td><td>Pemrograman Web</td><td>Praktik</td></tr>
+                <tr><td>Selasa</td><td>07.00–09.00</td><td>Administrasi Sistem Jaringan</td><td>Teori & praktik</td></tr>
+                <tr><td>Rabu</td><td>07.00–09.00</td><td>Infrastruktur Jaringan</td><td>Praktik</td></tr>
+                <tr><td>Kamis</td><td>07.00–09.00</td><td>Basis Data</td><td>Praktik</td></tr>
+                <tr><td>Jumat</td><td>07.00–09.00</td><td>Pendidikan Pancasila</td><td>Pembelajaran</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note">Catatan: jadwal di atas hanya contoh, bukan jadwal resmi sekolah.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="aktivitas">
+      <div class="container">
+        <div class="section-heading">
+          <span class="kicker">Pengalaman</span>
+          <h2>Aktivitas & Minat</h2>
+          <p>Beberapa hal yang saya sukai dan kembangkan.</p>
+        </div>
+        <div class="activity-grid">
+          <article class="card activity-card"><div class="emoji">💻</div><h3>Pemrograman</h3><p class="muted">Mempelajari HTML, CSS, JavaScript, dan membuat proyek web sederhana.</p></article>
+          <article class="card activity-card"><div class="emoji">🛠️</div><h3>Teknologi Jaringan</h3><p class="muted">Mengenal komputer, jaringan, konfigurasi, dan pemecahan masalah teknis.</p></article>
+          <article class="card activity-card"><div class="emoji">🍳</div><h3>Memasak</h3><p class="muted">Mencoba resep dan mengembangkan kreativitas melalui kegiatan memasak.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="galeri">
+      <div class="container">
+        <div class="section-heading">
+          <span class="kicker">Dokumentasi</span>
+          <h2>Galleries</h2>
+          <p>Tempat untuk menampilkan foto kegiatan sekolah, praktik, proyek, atau hobi.</p>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="image1.jpg" alt="Foto kegiatan pertama">
+          </div>
+          <div class="gallery-item">
+            <img src="image2.jpg" alt="Foto kegiatan kedua">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>Lukman Azzis Prassetyo</strong>
+      <p>Website pribadi • Tugas Praktikum CSS</p>
+      <p>© 2026 — Dibuat dengan HTML dan CSS.</p>
+    </div>
+  </footer>
+  <a class="back-top" href="#home" aria-label="Kembali ke atas">↑</a>
+</body>
+  </html>
